@@ -1,0 +1,15 @@
+const arabicToEnglish = (string) =>
+  string.replace(/[٠-٩]/g, (digit) => "٠١٢٣٤٥٦٧٨٩".indexOf(digit));
+
+class {
+  onCreate() {
+    this.state = { name: "" };
+  }
+}
+
+<label>This input changes arabic numbers to english numbers! </label>
+
+<input
+  value=(state.name)
+  on-input(event => state.name = arabicToEnglish(event.target.value))
+/>

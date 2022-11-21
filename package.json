@@ -1,0 +1,28 @@
+{
+  "name": "mitosis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "mitosis build",
+    "lint": "eslint"
+  },
+  "exports": {
+    "./react/*": "./dist/react/src/*",
+    "./qwik/*": "./dist/qwik/src/*",
+    "./svelte/*": "./dist/svelte/src/*",
+    "./angular/*": "./dist/angular/src/*",
+    "./html/*": "./dist/html/src/*",
+    "./solid/*": "./dist/solid/src/*"
+  },
+  "keywords": [],
+  "author": "Abdullah Mzaien",
+  "license": "ISC",
+  "dependencies": {
+    "@builder.io/mitosis": "^0.0.81",
+    "@builder.io/mitosis-cli": "^0.0.39"
+  },
+  "devDependencies": {
+    "@builder.io/eslint-plugin-mitosis": "^0.0.11"
+  }
+}

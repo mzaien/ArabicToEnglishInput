@@ -1,0 +1,15 @@
+<div x-data="myComponent()">
+  <label>This input changes arabic numbers to english numbers!</label>
+
+  <input
+    x-bind:value="name"
+    x-on:change="name = arabicToEnglish(event.target.value)"
+  />
+</div>
+<script>
+  document.addEventListener("alpine:init", () => {
+    Alpine.data("myComponent", () => ({
+      name: "",
+    }));
+  });
+</script>
