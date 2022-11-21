@@ -1,7 +1,7 @@
 # Arabic to English text input 🌀
 <div align=center>
 
-![Banner](bannar.png)
+![Banner](bannar.svg)
 </div>
 <br>
 This is a small attempt to enhance the ux for Arabic users on the web/mobile.
