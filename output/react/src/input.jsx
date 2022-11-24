@@ -13,7 +13,7 @@ export default function MyComponent(props) {
 
       <input
         value={name}
-        onChange={(event) => setName(arabicToEnglish(event.target.value))}
+        onInput={(event) => setName(arabicToEnglish(event.target.value))}
       />
     </>
   );

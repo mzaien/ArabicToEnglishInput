@@ -53,12 +53,6 @@ struct MyComponent: View {
       VStack() {Text("This input changes arabic numbers to english numbers!")}
 
       TextField("", text: $input1)
-      .onChange(of: input1) { input1 in
-        eval(code: """
-        (() => { var event = { target: { value: "\(input1)" } };
-        state.name = arabicToEnglish(event.target.value) })()
-        """)
-      }
 
       }
       .onAppear {

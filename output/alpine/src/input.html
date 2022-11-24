@@ -3,7 +3,7 @@
 
   <input
     x-bind:value="name"
-    x-on:change="name = arabicToEnglish(event.target.value)"
+    x-on:input="name = arabicToEnglish(event.target.value)"
   />
 </div>
 <script>

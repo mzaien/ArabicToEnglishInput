@@ -9,7 +9,7 @@
 
 <input
   value={name}
-  on:change={(event) => {
+  on:input={(event) => {
     name = arabicToEnglish(event.target.value);
   }}
 />

@@ -16,7 +16,7 @@ export default function MyComponent(props) {
 
       <View
         value={name}
-        onChange={(event) => setName(arabicToEnglish(event.target.value))}
+        onInput={(event) => setName(arabicToEnglish(event.target.value))}
       />
     </>
   );

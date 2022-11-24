@@ -10,9 +10,7 @@ export const MyComponent = component$((props) => {
       <label>This input changes arabic numbers to english numbers! </label>
       <input
         value={state.name}
-        onChange$={(event) =>
-          (state.name = arabicToEnglish(event.target.value))
-        }
+        onInput$={(event) => (state.name = arabicToEnglish(event.target.value))}
       ></input>
     </Fragment>
   );
