@@ -3,13 +3,13 @@ const arabicToEnglish = (string) =>
 
 class {
   onCreate() {
-    this.state = { name: "" };
+    this.state = { number: "" };
   }
 }
 
 <label>This input changes arabic numbers to english numbers! </label>
 
 <input
-  value=(state.name)
-  on-input(event => state.name = arabicToEnglish(event.target.value))
+  value=(state.number)
+  on-input(event => state.number = arabicToEnglish(event.target.value))
 />

@@ -4,7 +4,7 @@
 
 <script>
   (() => {
-    const state = { name: "" };
+    const state = { number: "" };
 
     let context = null;
     let nodesToDestroy = [];
@@ -26,7 +26,7 @@
       pendingUpdate = true;
 
       document.querySelectorAll("[data-el='input-1']").forEach((el) => {
-        el.value = state.name;
+        el.value = state.number;
 
         el.removeEventListener("input", onInput1Input);
         el.addEventListener("input", onInput1Input);
@@ -39,7 +39,7 @@
 
     // Event handler for 'input' event on input-1
     function onInput1Input(event) {
-      state.name = arabicToEnglish(event.target.value);
+      state.number = arabicToEnglish(event.target.value);
       update();
     }
 

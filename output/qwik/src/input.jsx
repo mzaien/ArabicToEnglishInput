@@ -4,13 +4,15 @@ import { Fragment, component$, h, useStore } from "@builder.io/qwik";
 const arabicToEnglish = (string) =>
   string.replace(/[٠-٩]/g, (digit) => "٠١٢٣٤٥٦٧٨٩".indexOf(digit));
 export const MyComponent = component$((props) => {
-  const state = useStore({ name: "" });
+  const state = useStore({ number: "" });
   return (
     <Fragment>
       <label>This input changes arabic numbers to english numbers! </label>
       <input
-        value={state.name}
-        onInput$={(event) => (state.name = arabicToEnglish(event.target.value))}
+        value={state.number}
+        onInput$={(event) =>
+          (state.number = arabicToEnglish(event.target.value))
+        }
       ></input>
     </Fragment>
   );

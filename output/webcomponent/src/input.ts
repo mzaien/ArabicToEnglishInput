@@ -16,7 +16,7 @@ class MyComponent extends HTMLElement {
     super();
     const self = this;
 
-    this.state = { name: "" };
+    this.state = { number: "" };
     if (!this.props) {
       this.props = {};
     }
@@ -28,7 +28,7 @@ class MyComponent extends HTMLElement {
 
     // Event handler for 'input' event on input-my-component-1
     this.onInputMyComponent1Input = (event) => {
-      this.state.name = arabicToEnglish(event.target.value);
+      this.state.number = arabicToEnglish(event.target.value);
       this.update();
     };
 
@@ -120,7 +120,7 @@ class MyComponent extends HTMLElement {
     this._root
       .querySelectorAll("[data-el='input-my-component-1']")
       .forEach((el) => {
-        el.value = this.state.name;
+        el.value = this.state.number;
 
         el.removeEventListener("input", this.onInputMyComponent1Input);
         el.addEventListener("input", this.onInputMyComponent1Input);

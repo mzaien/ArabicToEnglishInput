@@ -10,7 +10,7 @@ export default class MyComponent extends LitElement {
     return this;
   }
 
-  @state() name = "";
+  @state() number = "";
 
   render() {
     return html`
@@ -18,8 +18,8 @@ export default class MyComponent extends LitElement {
       <my-fragment>
       <label>This input changes arabic numbers to english numbers! </label>
 
-      <input .value=${this.name} @input=${(event) =>
-      (this.name = arabicToEnglish(event.target.value))} />
+      <input .value=${this.number} @input=${(event) =>
+      (this.number = arabicToEnglish(event.target.value))} />
     </my-fragment>
 
     `;

@@ -13,8 +13,8 @@ const arabicToEnglish = (string) =>
       <label>This input changes arabic numbers to english numbers!</label>
 
       <input
-        [attr.value]="name"
-        (input)="name = arabicToEnglish($event.target.value)"
+        [attr.value]="number"
+        (input)="number = arabicToEnglish($event.target.value)"
       />
     </ng-container>
   `,
@@ -22,7 +22,7 @@ const arabicToEnglish = (string) =>
 export class MyComponent {
   arabicToEnglish = arabicToEnglish;
 
-  name = "";
+  number = "";
 }
 
 @NgModule({

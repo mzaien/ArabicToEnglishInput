@@ -2,14 +2,14 @@
   <label>This input changes arabic numbers to english numbers!</label>
 
   <input
-    x-bind:value="name"
-    x-on:input="name = arabicToEnglish(event.target.value)"
+    x-bind:value="number"
+    x-on:input="number = arabicToEnglish(event.target.value)"
   />
 </div>
 <script>
   document.addEventListener("alpine:init", () => {
     Alpine.data("myComponent", () => ({
-      name: "",
+      number: "",
     }));
   });
 </script>

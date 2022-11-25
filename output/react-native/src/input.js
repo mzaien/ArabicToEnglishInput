@@ -6,7 +6,7 @@ const arabicToEnglish = (string) =>
   string.replace(/[٠-٩]/g, (digit) => "٠١٢٣٤٥٦٧٨٩".indexOf(digit));
 
 export default function MyComponent(props) {
-  const [name, setName] = useState(() => "");
+  const [number, setNumber] = useState(() => "");
 
   return (
     <>
@@ -15,8 +15,8 @@ export default function MyComponent(props) {
       </View>
 
       <View
-        value={name}
-        onInput={(event) => setName(arabicToEnglish(event.target.value))}
+        value={number}
+        onInput={(event) => setNumber(arabicToEnglish(event.target.value))}
       />
     </>
   );

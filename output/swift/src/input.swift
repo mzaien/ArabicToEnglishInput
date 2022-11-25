@@ -20,13 +20,13 @@ struct MyComponent: View {
   }
 
   func setComputedState() {
-    input1 = eval(code: "state.name").toString()!
+    input1 = eval(code: "state.number").toString()!
   }
 
   init() {
     let jsSource = """
     const state = new Proxy(
-      { name: "" },
+      { number: "" },
       {
         set: (target, key, value) => {
           const returnVal = Reflect.set(target, key, value);

@@ -1,7 +1,10 @@
 <template>
   <label>This input changes arabic numbers to english numbers! </label>
 
-  <input :value="name" @input="name = arabicToEnglish($event.target.value)" />
+  <input
+    :value="number"
+    @input="number = arabicToEnglish($event.target.value)"
+  />
 </template>
 
 <script>
@@ -11,7 +14,7 @@ const arabicToEnglish = (string) =>
 export default {
   name: "my-component",
 
-  data: () => ({ name: "" }),
+  data: () => ({ number: "" }),
 
   methods: { arabicToEnglish },
 };
