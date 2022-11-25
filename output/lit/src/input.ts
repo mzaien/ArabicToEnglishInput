@@ -1,5 +1,7 @@
-const arabicToEnglish = (string) =>
-  string.replace(/[٠-٩]/g, (digit) => "٠١٢٣٤٥٦٧٨٩".indexOf(digit));
+const arabicToEnglish = (string) => {
+  const x = string.replace(/[^0-9٠-٩]+/g, "");
+  return x.replace(/[٠-٩]/g, (digit) => "٠١٢٣٤٥٦٧٨٩".indexOf(digit));
+};
 
 import { LitElement, html, css } from "lit";
 import { customElement, property, state, query } from "lit/decorators.js";
@@ -14,14 +16,14 @@ export default class MyComponent extends LitElement {
 
   render() {
     return html`
-      
-      <my-fragment>
-      <label>This input changes arabic numbers to english numbers! </label>
+        
+        <my-fragment>
+        <label>This input changes arabic numbers to english numbers! </label>
 
-      <input .value=${this.number} @input=${(event) =>
+        <input .value=${this.number} @input=${(event) =>
       (this.number = arabicToEnglish(event.target.value))} />
-    </my-fragment>
+      </my-fragment>
 
-    `;
+      `;
   }
 }
