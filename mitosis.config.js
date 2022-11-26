@@ -1,5 +1,5 @@
 module.exports = {
-    files: 'src/**',
+    files: 'input.lite.tsx',
     targets: [
       'solid',
       'react',
