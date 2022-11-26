@@ -1,8 +1,8 @@
 import { createSignal } from "solid-js";
 
 const arabicToEnglish = (string) => {
-  const x = string.replace(/[^0-9٠-٩]+/g, "");
-  return x.replace(/[٠-٩]/g, (digit) => "٠١٢٣٤٥٦٧٨٩".indexOf(digit));
+  const number = string.replace(/[^0-9٠-٩]+/g, "");
+  return number.replace(/[٠-٩]/g, (digit) => "٠١٢٣٤٥٦٧٨٩".indexOf(digit));
 };
 
 function MyComponent(props) {

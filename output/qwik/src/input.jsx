@@ -2,8 +2,8 @@
 
 import { Fragment, component$, h, useStore } from "@builder.io/qwik";
 const arabicToEnglish = (string) => {
-  const x = string.replace(/[^0-9٠-٩]+/g, "");
-  return x.replace(/[٠-٩]/g, (digit) => "٠١٢٣٤٥٦٧٨٩".indexOf(digit));
+  const number = string.replace(/[^0-9٠-٩]+/g, "");
+  return number.replace(/[٠-٩]/g, (digit) => "٠١٢٣٤٥٦٧٨٩".indexOf(digit));
 };
 export const MyComponent = component$((props) => {
   const state = useStore({ number: "" });
