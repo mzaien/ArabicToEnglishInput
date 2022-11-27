@@ -2,19 +2,21 @@
 import { h, Fragment } from "preact";
 import { useState } from "preact/hooks";
 
-const arabicToEnglish = (string) =>
-  string.replace(/[٠-٩]/g, (digit) => "٠١٢٣٤٥٦٧٨٩".indexOf(digit));
+const arabicToEnglish = (string) => {
+  const number = string.replace(/[^0-9٠-٩]+/g, "");
+  return number.replace(/[٠-٩]/g, (digit) => "٠١٢٣٤٥٦٧٨٩".indexOf(digit));
+};
 
 export default function MyComponent(props) {
-  const [name, setName] = useState(() => "");
+  const [number, setNumber] = useState(() => "");
 
   return (
     <Fragment>
       <label>This input changes arabic numbers to english numbers! </label>
 
       <input
-        value={name}
-        onChange={(event) => setName(arabicToEnglish(event.target.value))}
+        value={number}
+        onInput={(event) => setNumber(arabicToEnglish(event.target.value))}
       />
     </Fragment>
   );

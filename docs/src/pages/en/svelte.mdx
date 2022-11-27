@@ -6,19 +6,21 @@ import SvelteInput from '../../components/AtEInput/input.svelte';
 
 ```svelte
 <script>
-    const arabicToEnglish = (string) =>
-      string.replace(/[٠-٩]/g, (digit) => "٠١٢٣٤٥٦٧٨٩".indexOf(digit));
-  
-    let name = "";
-  </script>
-  
-  <label>This input changes arabic numbers to english numbers! </label>
-  
-  <input
-    value={name}
-    on:input={(event) => {
-      name = arabicToEnglish(event.target.value);
-    }}
-  />
+  const arabicToEnglish = (string) => {
+    const number = string.replace(/[^0-9٠-٩]+/g, "");
+    return number.replace(/[٠-٩]/g, (digit) => "٠١٢٣٤٥٦٧٨٩".indexOf(digit));
+  };
+
+  let number = "";
+</script>
+
+<label>This input changes arabic numbers to english numbers! </label>
+
+<input
+  value={number}
+  on:input={(event) => {
+    number = arabicToEnglish(event.target.value);
+  }}
+/>
 ```
 <SvelteInput client:visible/>
