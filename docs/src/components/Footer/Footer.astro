@@ -1,0 +1,19 @@
+---
+type Props = {
+	path: string;
+};
+const { path } = Astro.props as Props;
+---
+
+<footer>
+	Made with love 🤖 by <a href="https://github.com/mzaien">Mzaien</a>
+</footer>
+
+<style>
+	footer {
+		text-align: center;
+		margin-top: auto;
+		padding: 2rem;
+		border-top: 3px solid var(--theme-divider);
+	}
+</style>

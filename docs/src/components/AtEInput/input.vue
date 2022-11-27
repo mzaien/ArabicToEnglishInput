@@ -1,0 +1,23 @@
+<template>
+  <label>This input changes arabic numbers to english numbers! </label>
+
+  <input
+    :value="number"
+    @input="number = arabicToEnglish($event.target.value)"
+  />
+</template>
+
+<script>
+const arabicToEnglish = (string) => {
+  const number = string.replace(/[^0-9٠-٩]+/g, "");
+  return number.replace(/[٠-٩]/g, (digit) => "٠١٢٣٤٥٦٧٨٩".indexOf(digit));
+};
+
+export default {
+  name: "my-component",
+
+  data: () => ({ number: "" }),
+
+  methods: { arabicToEnglish },
+};
+</script>
