@@ -4,7 +4,7 @@
 ![Banner](bannar.svg)
 </div>
 
-**Please visit the [docs](https://arabic-to-english.vercel.app/) for more info.**
+**Please visit the [docs](https://arabic-to-english-input.vercel.app/) for more info.**
 <br>
 
 ## Motivation
