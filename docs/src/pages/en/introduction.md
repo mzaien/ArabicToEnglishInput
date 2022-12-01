@@ -12,7 +12,7 @@ layout: ../../layouts/MainLayout.astro
 <br>
 
 ## Motivation
-After encountering this issue ![issue](/issue.gif) in many sites, I decided to make a simple solution for it that works with almost all frameworks and libraries.
+After encountering this issue ![issue](/issue.gif) in many sites, I decided to make a simple solution for it that works with almost all front end frameworks and libraries.
 
 Thanks for [Drahim](https://drah.im/login) for the idea.
 ![gif](/drahim.gif)
