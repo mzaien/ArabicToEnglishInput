@@ -49,6 +49,7 @@ export const SIDEBAR: Sidebar = {
 			{ text: 'Vue', link: 'en/vue' },
 			{ text: 'Lit', link: 'en/lit' },
 		],
-		'Other frameworks': [{ text: 'other', link: 'en/other' }],
+		'Other frameworks': [{ text: 'Other', link: 'en/other' }],
+		'Changelog': [{ text: 'Changelog', link: 'en/changelog' }],
 	},
 };
