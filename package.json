@@ -7,15 +7,18 @@
     "build": "mitosis build",
     "lint": "eslint"
   },
-  "exports": {
-    "./react/*": "./dist/react/src/*",
-    "./qwik/*": "./dist/qwik/src/*",
-    "./svelte/*": "./dist/svelte/src/*",
-    "./angular/*": "./dist/angular/src/*",
-    "./html/*": "./dist/html/src/*",
-    "./solid/*": "./dist/solid/src/*"
-  },
-  "keywords": [],
+  "keywords": [
+    "solid",
+    "react",
+    "preact",
+    "angular",
+    "vue",
+    "svelte",
+    "mitosis",
+    "swift",
+    "react-native",
+    "lit"
+  ],
   "author": "Abdullah Mzaien",
   "license": "ISC",
   "dependencies": {
