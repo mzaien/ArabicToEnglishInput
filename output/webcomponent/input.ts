@@ -1,6 +1,14 @@
+export interface MyComponentProps {
+  inputMode?: "numeric" | "tel" | "decimal";
+}
+
 const arabicToEnglish = (string) => {
-  const number = string.replace(/[^0-9٠-٩]+/g, "");
-  return number.replace(/[٠-٩]/g, (digit) => "٠١٢٣٤٥٦٧٨٩".indexOf(digit));
+  // removing non numeric characters
+  const number = string.replace(/[^0-9٠-٩.,]+/g, "");
+  // replacing arabic numbers with english numbers
+  return number.replace(/[\u0660-\u0669]/g, (digit) =>
+    "٠١٢٣٤٥٦٧٨٩".indexOf(digit)
+  );
 };
 
 /**
@@ -22,6 +30,8 @@ class MyComponent extends HTMLElement {
     if (!this.props) {
       this.props = {};
     }
+
+    this.componentProps = ["inputMode"];
 
     // used to keep track of all nodes created by show/for
     this.nodesToDestroy = [];
@@ -46,8 +56,23 @@ class MyComponent extends HTMLElement {
   }
 
   connectedCallback() {
+    this.getAttributeNames().forEach((attr) => {
+      const jsVar = attr.replace(/-/g, "");
+      const regexp = new RegExp(jsVar, "i");
+      this.componentProps.forEach((prop) => {
+        if (regexp.test(prop)) {
+          const attrValue = this.getAttribute(attr);
+          if (this.props[prop] !== attrValue) {
+            this.props[prop] = attrValue;
+          }
+        }
+      });
+    });
+
     this._root.innerHTML = `
       <label>This input changes arabic numbers to english numbers!</label>
+      
+      <br />
       
       <input
         data-el="input-my-component-1"
@@ -126,6 +151,8 @@ class MyComponent extends HTMLElement {
 
         el.removeEventListener("input", this.onInputMyComponent1Input);
         el.addEventListener("input", this.onInputMyComponent1Input);
+
+        el.setAttribute("inputMode", this.props.inputMode ?? "numeric");
       });
   }
 

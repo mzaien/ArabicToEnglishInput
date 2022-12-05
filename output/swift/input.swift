@@ -52,6 +52,8 @@ struct MyComponent: View {
 
       VStack() {Text("This input changes arabic numbers to english numbers!")}
 
+      VStack() {}
+
       TextField("", text: $input1)
 
       }

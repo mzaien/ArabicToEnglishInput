@@ -1,11 +1,13 @@
 <label>This input changes arabic numbers to english numbers!</label>
 
+<br />
+
 <input data-el="input-1" data-dom-state="input-2" />
 
 <script>
   (() => {
     const state = { number: "" };
-
+    let props = {};
     let context = null;
     let nodesToDestroy = [];
     let pendingUpdate = false;
@@ -30,6 +32,8 @@
 
         el.removeEventListener("input", onInput1Input);
         el.addEventListener("input", onInput1Input);
+
+        el.setAttribute("inputMode", props.inputMode ?? "numeric");
       });
 
       destroyAnyNodes();

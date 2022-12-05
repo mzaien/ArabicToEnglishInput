@@ -3,8 +3,12 @@ import { h, Fragment } from "preact";
 import { useState } from "preact/hooks";
 
 const arabicToEnglish = (string) => {
-  const number = string.replace(/[^0-9٠-٩]+/g, "");
-  return number.replace(/[٠-٩]/g, (digit) => "٠١٢٣٤٥٦٧٨٩".indexOf(digit));
+  // removing non numeric characters
+  const number = string.replace(/[^0-9٠-٩.,]+/g, "");
+  // replacing arabic numbers with english numbers
+  return number.replace(/[\u0660-\u0669]/g, (digit) =>
+    "٠١٢٣٤٥٦٧٨٩".indexOf(digit)
+  );
 };
 
 export default function MyComponent(props) {
@@ -14,9 +18,12 @@ export default function MyComponent(props) {
     <Fragment>
       <label>This input changes arabic numbers to english numbers! </label>
 
+      <br />
+
       <input
         value={number}
         onInput={(event) => setNumber(arabicToEnglish(event.target.value))}
+        inputMode={props.inputMode ?? "numeric"}
       />
     </Fragment>
   );
