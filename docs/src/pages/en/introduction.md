@@ -30,7 +30,7 @@ Conversion function is taken from [here](https://stackoverflow.com/questions/314
 These are missing framework implementations and some non working ones.<br>
 If you want to contribute to this project, you can implement one of these frameworks and open a pr 🤗.
 
-- [ ] Lit is not working properly
+- [ ] Lit implementation is not working properly
 - [ ] Flutter
 - [ ] Kotlin
 - [ ] Java
