@@ -1,5 +1,5 @@
 export interface MyComponentProps {
-  inputMode?: "numeric" | "tel" | "decimal";
+  inputMode?: "numeric" | "decimal" | "tel";
 }
 
 const arabicToEnglish = (string) => {
@@ -148,10 +148,8 @@ class MyComponent extends HTMLElement {
       .querySelectorAll("[data-el='input-my-component-1']")
       .forEach((el) => {
         el.value = this.state.number;
-
         el.removeEventListener("input", this.onInputMyComponent1Input);
         el.addEventListener("input", this.onInputMyComponent1Input);
-
         el.setAttribute("inputMode", this.props.inputMode ?? "numeric");
       });
   }

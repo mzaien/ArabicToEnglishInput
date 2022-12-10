@@ -4,7 +4,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { Component, Input } from "@angular/core";
 
 export interface MyComponentProps {
-  inputMode?: "numeric" | "tel" | "decimal";
+  inputMode?: "numeric" | "decimal" | "tel";
 }
 
 const arabicToEnglish = (string) => {

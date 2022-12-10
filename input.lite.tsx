@@ -7,7 +7,7 @@ const arabicToEnglish = (string) => {
   return number.replace(/[\u0660-\u0669]/g, (digit) => "٠١٢٣٤٥٦٧٨٩".indexOf(digit));
 };
 
-export default function MyComponent() {
+export default function MyComponent(props: { inputMode?: "numeric" | "decimal" | "tel" }) {
   const [number, setNumber] = useState("");
   return (
     <>
@@ -16,6 +16,7 @@ export default function MyComponent() {
       <input
         value={number}
         onInput={(event) => setNumber(arabicToEnglish(event.target.value))}
+        inputMode={props.inputMode ?? "numeric"}
       />
     </>
   );

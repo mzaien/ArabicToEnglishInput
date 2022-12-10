@@ -11,7 +11,7 @@ import { LitElement, html, css } from "lit";
 import { customElement, property, state, query } from "lit/decorators.js";
 
 export interface MyComponentProps {
-  inputMode?: "numeric" | "tel" | "decimal";
+  inputMode?: "numeric" | "decimal" | "tel";
 }
 
 @customElement("my-component")

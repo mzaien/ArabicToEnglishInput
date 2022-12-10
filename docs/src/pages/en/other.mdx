@@ -11,8 +11,12 @@ import { View, StyleSheet, Image, Text } from "react-native";
 import { useState } from "react";
 
 const arabicToEnglish = (string) => {
-  const number = string.replace(/[^0-9٠-٩]+/g, "");
-  return number.replace(/[٠-٩]/g, (digit) => "٠١٢٣٤٥٦٧٨٩".indexOf(digit));
+  // removing non numeric characters
+  const number = string.replace(/[^0-9٠-٩.,]+/g, "");
+  // replacing arabic numbers with english numbers
+  return number.replace(/[\u0660-\u0669]/g, (digit) =>
+    "٠١٢٣٤٥٦٧٨٩".indexOf(digit)
+  );
 };
 
 export default function MyComponent(props) {
@@ -24,9 +28,12 @@ export default function MyComponent(props) {
         <Text>This input changes arabic numbers to english numbers! </Text>
       </View>
 
+      <View />
+
       <View
         value={number}
         onInput={(event) => setNumber(arabicToEnglish(event.target.value))}
+        inputMode={props.inputMode ?? "numeric"}
       />
     </>
   );
@@ -39,19 +46,25 @@ export default function MyComponent(props) {
 
 import { Fragment, component$, h, useStore } from "@builder.io/qwik";
 const arabicToEnglish = (string) => {
-  const number = string.replace(/[^0-9٠-٩]+/g, "");
-  return number.replace(/[٠-٩]/g, (digit) => "٠١٢٣٤٥٦٧٨٩".indexOf(digit));
+  // removing non numeric characters
+  const number = string.replace(/[^0-9٠-٩.,]+/g, "");
+  // replacing arabic numbers with english numbers
+  return number.replace(/[\u0660-\u0669]/g, (digit) =>
+    "٠١٢٣٤٥٦٧٨٩".indexOf(digit)
+  );
 };
 export const MyComponent = component$((props) => {
   const state = useStore({ number: "" });
   return (
     <Fragment>
       <label>This input changes arabic numbers to english numbers! </label>
+      <br></br>
       <input
         value={state.number}
         onInput$={(event) =>
           (state.number = arabicToEnglish(event.target.value))
         }
+        inputMode={props.inputMode ?? "numeric"}
       ></input>
     </Fragment>
   );
@@ -60,10 +73,18 @@ export default MyComponent;
 ```
 
 ## Web Components
-```html
+```ts
+export interface MyComponentProps {
+  inputMode?: "numeric" | "tel" | "decimal";
+}
+
 const arabicToEnglish = (string) => {
-  const number = string.replace(/[^0-9٠-٩]+/g, "");
-  return number.replace(/[٠-٩]/g, (digit) => "٠١٢٣٤٥٦٧٨٩".indexOf(digit));
+  // removing non numeric characters
+  const number = string.replace(/[^0-9٠-٩.,]+/g, "");
+  // replacing arabic numbers with english numbers
+  return number.replace(/[\u0660-\u0669]/g, (digit) =>
+    "٠١٢٣٤٥٦٧٨٩".indexOf(digit)
+  );
 };
 
 /**
@@ -85,6 +106,8 @@ class MyComponent extends HTMLElement {
     if (!this.props) {
       this.props = {};
     }
+
+    this.componentProps = ["inputMode"];
 
     // used to keep track of all nodes created by show/for
     this.nodesToDestroy = [];
@@ -109,8 +132,23 @@ class MyComponent extends HTMLElement {
   }
 
   connectedCallback() {
+    this.getAttributeNames().forEach((attr) => {
+      const jsVar = attr.replace(/-/g, "");
+      const regexp = new RegExp(jsVar, "i");
+      this.componentProps.forEach((prop) => {
+        if (regexp.test(prop)) {
+          const attrValue = this.getAttribute(attr);
+          if (this.props[prop] !== attrValue) {
+            this.props[prop] = attrValue;
+          }
+        }
+      });
+    });
+
     this._root.innerHTML = `
       <label>This input changes arabic numbers to english numbers!</label>
+      
+      <br />
       
       <input
         data-el="input-my-component-1"
@@ -189,6 +227,8 @@ class MyComponent extends HTMLElement {
 
         el.removeEventListener("input", this.onInputMyComponent1Input);
         el.addEventListener("input", this.onInputMyComponent1Input);
+
+        el.setAttribute("inputMode", this.props.inputMode ?? "numeric");
       });
   }
 
@@ -213,11 +253,19 @@ customElements.define("my-component", MyComponent);
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
+
+export interface MyComponentProps {
+  inputMode?: "numeric" | "decimal" | "tel";
+}
 
 const arabicToEnglish = (string) => {
-  const number = string.replace(/[^0-9٠-٩]+/g, "");
-  return number.replace(/[٠-٩]/g, (digit) => "٠١٢٣٤٥٦٧٨٩".indexOf(digit));
+  // removing non numeric characters
+  const number = string.replace(/[^0-9٠-٩.,]+/g, "");
+  // replacing arabic numbers with english numbers
+  return number.replace(/[\u0660-\u0669]/g, (digit) =>
+    "٠١٢٣٤٥٦٧٨٩".indexOf(digit)
+  );
 };
 
 @Component({
@@ -226,15 +274,20 @@ const arabicToEnglish = (string) => {
     <ng-container>
       <label>This input changes arabic numbers to english numbers!</label>
 
+      <br />
+
       <input
         [attr.value]="number"
         (input)="number = arabicToEnglish($event.target.value)"
+        [attr.inputMode]='inputMode ?? "numeric"'
       />
     </ng-container>
   `,
 })
 export class MyComponent {
   arabicToEnglish = arabicToEnglish;
+
+  @Input() inputMode: MyComponentProps["inputMode"];
 
   number = "";
 }
@@ -303,6 +356,8 @@ struct MyComponent: View {
     VStack {
 
       VStack() {Text("This input changes arabic numbers to english numbers!")}
+
+      VStack() {}
 
       TextField("", text: $input1)
 

@@ -14,7 +14,7 @@ function MyComponent(props) {
 
   return (
     <>
-      <label>This input changes arabic numbers to english numbers!</label>
+      <label>This input changes arabic numbers to english numbers! </label>
       <br />
       <input
         value={number()}
