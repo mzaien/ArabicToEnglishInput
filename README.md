@@ -22,6 +22,8 @@ I certainly do not know how to use all frameworks but to this I used [Mitosis](h
 ### References
 Conversion function is taken from [here](https://stackoverflow.com/questions/31439604/how-to-convert-persian-and-arabic-digits-of-a-string-to-english-using-javascript).
 
+### Changelog 
+for any new project updates visit [changelogs](https://arabic-to-english-input.vercel.app/en/changelog)
 
 ### Missing framework implementations
 These are missing framework implementations and some non working ones.<br>
