@@ -23,10 +23,7 @@
   "license": "ISC",
   "dependencies": {
     "@builder.io/mitosis": "^0.0.83",
-    "@builder.io/mitosis-cli": "^0.0.41",
-    "command": "^0.0.5",
-    "external": "^1.0.0",
-    "npm": "^9.2.0"
+    "@builder.io/mitosis-cli": "^0.0.41"
   },
   "devDependencies": {
     "@builder.io/eslint-plugin-mitosis": "^0.0.12"
