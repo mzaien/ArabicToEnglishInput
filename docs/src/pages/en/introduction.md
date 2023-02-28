@@ -31,6 +31,6 @@ These are missing framework implementations and some non working ones.<br>
 If you want to contribute to this project, you can implement one of these frameworks and open a pr 🤗.
 
 - [ ] Lit implementation is not working properly
-- [ ] Flutter
+- [x] Flutter thanks to @mub-pro] Flutter
 - [ ] Kotlin
 - [ ] Java
